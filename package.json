@@ -1,0 +1,37 @@
+{
+  "name": "@escofieldpublic/vue-file-helper",
+  "version": "0.0.26",
+  "description": "A set of scripts for creating Vue.js files",
+  "bin": {
+    "vue-helper-component": "bin/genComponent.js",
+    "vue-helper-filter": "bin/genFilter.js",
+    "vue-helper-module": "bin/genModule.js",
+    "vue-helper-model": "bin/genModel.js",
+    "vue-helper-service": "bin/genService.js",
+    "vue-helper-view": "bin/genView.js"
+  },
+  "dependencies": {
+    "mustache": "^2.3.0",
+    "replace": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/escofield/vue-file-helper.git"
+  },
+  "keywords": [
+    "Vue.Js",
+    "Vue",
+    "File",
+    "Generator"
+  ],
+  "author": "escofield",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/escofield/vue-file-helper/issues"
+  },
+  "homepage": "https://github.com/escofield/vue-file-helper#readme",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
