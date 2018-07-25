@@ -19,8 +19,11 @@ VueTidyRoutes.route('/{{{name}}}', { name: '{{{name}}}', component: {{{className
 export default {{{className}}}
 </script>
 <style{{#style}} lang="{{style}}"{{/style}}>
+{{#styleImports}}
+{{{.}}}
+{{/styleImports}}
 .{{{name}}} {}
 </style>
 <template{{#html}} lang="{{html}}"{{/html}}>
-.{{{name}}Hello from {{{name}}} component
+.{{{name}}} Hello from {{{name}}} component
 </template>

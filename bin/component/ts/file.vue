@@ -6,9 +6,12 @@ import { Component, Vue } from 'vue-property-decorator'
 })
 export default class {{{className}}} extends Vue {}
 </script>
-<style lang="stylus">
+<style{{#style}} lang="{{style}}"{{/style}}>
+{{#styleImports}}
+{{{.}}}
+{{/styleImports}}
 .{{{name}}} {}
 </style>
-<template lang="pug">
+<template{{#html}} lang="{{html}}"{{/html}}>
 .{{{name}}} Hello from {{{name}}} component
 </template>

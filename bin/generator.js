@@ -2,7 +2,7 @@ var fs = require('fs')
 var replace = require('replace')
 var mustache = require('mustache')
 
-module.exports = function({type, name, lang, html, style, filePath, indexPath, fileExt}) {
+module.exports = function({type, name, lang, filePath, indexPath, fileExt, options}) {
   var className = name.charAt(0).toUpperCase() + name.substr(1)
   var template = {
     'ts': {
@@ -21,7 +21,7 @@ module.exports = function({type, name, lang, html, style, filePath, indexPath, f
       r2: '## GEN_INSERT_TOKEN_2 ##',
     }
   }
-  var view = Object.assign(template[lang], {className: className, name: name, style: style, html: html})
+  var view = Object.assign(template[lang], {className: className, name: name, ...options})
   fileExt = !!fileExt ? fileExt : view.ext
   var file = `${filePath}${name}.${fileExt}`
   var tPath = `${__dirname}\\${type}\\${lang}\\`
