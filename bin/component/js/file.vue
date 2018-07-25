@@ -10,9 +10,9 @@ export default  {
   },
 }
 </script>
-<style lang="stylus">
+<style{{#style}} lang="{{style}}"{{/style}}>
 .{{{name}}} {}
 </style>
-<template lang="pug">
-.{{{name}}} Hello from {{{name}}} component
+<template{{#html}} lang="{{html}}"{{/html}}>
+.{{{name}}Hello from {{{name}}} component
 </template>

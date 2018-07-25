@@ -1,6 +1,6 @@
 {
   "name": "@escofieldpublic/vue-file-helper",
-  "version": "0.0.27",
+  "version": "0.1.1",
   "description": "A set of scripts for creating Vue.js files",
   "bin": {
     "vue-helper-component": "bin/genComponent.js",
