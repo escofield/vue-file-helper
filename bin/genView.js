@@ -6,6 +6,8 @@ var [ , , name, ...options] = process.argv
 
 var p = `${process.env.INIT_CWD}\\src\\views\\`
 var lang = (helper !== null && helper.lang !== null)? helper.lang : 'js'
+var style = (helper !== null && helper.style !== null)? helper.style : null
+var html = (helper !== null && helper.html !== null)? helper.html : null
 
 if (name === undefined) {
   console.log(`Adds a view to the views directory, creats the index.${lang} if it is missing.`)
@@ -13,5 +15,5 @@ if (name === undefined) {
   console.log('  Usage: [name]')
 }else{
 
-  generate({type:'view', name:name, lang:lang, filePath:p, indexPath:p, fileExt:'vue'})
+  generate({type:'view', name:name, style:style, html:html, lang:lang, filePath:p, indexPath:p, fileExt:'vue'})
 }

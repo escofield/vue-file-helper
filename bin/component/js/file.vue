@@ -1,10 +1,14 @@
 <script>
 import { Component, Vue } from 'vue-property-decorator'
-@Component({
+
+export default  {
   name: '{{{name}}}',
-  components: { }
-})
-export default class {{{className}}} extends Vue {}
+  data: () => {
+    return {
+      msg: 'some data',
+    }
+  },
+}
 </script>
 <style lang="stylus">
 .{{{name}}} {}

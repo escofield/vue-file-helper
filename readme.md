@@ -21,10 +21,16 @@ these can be accessed via the shell from the project folder.  You should modify 
         "service": "vue-helper-service"
     },
     "vueHelper": {
-          "lang": "js"
+          "lang": "js",
+		  "html": "pug",
+		  "style": "stylus"
     }
 
-lang specifies the output file types and can be ['js','coffee']  'ts' is experimental it will output files but I was unsuccessful with the dependencies i have chosen.)
+lang: specifies the output file types and can be ['js','coffee']  'ts' is experimental it will output files but I was unsuccessful with the dependencies i have chosen.)
+html: specifies the template type,  exlude for default html templates.  The value is placed into the lang tag if included.  example:
+`	"html": "pug"  will produce <template lang="pug">`
+style: specifies the style type, exclude for the default style.
+	`"style": "stylus" will produce <style lang="stylus">`
 
 The folder structure this produces:
 
