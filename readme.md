@@ -21,9 +21,13 @@ these can be accessed via the shell from the project folder.  You should modify 
         "service": "vue-helper-service"
     },
     "vueHelper": {
-          "lang": "js",
-		  "html": "pug",
-		  "style": "stylus"
+		"lang": "js",
+		"options": {
+			"html": "pug",
+			"style": "less"
+			"styleImports": [
+				"@import \"..\theme\variables.less\";"
+			]
     }
 
 lang: specifies the output file types and can be ['js','coffee']  'ts' is experimental it will output files but I was unsuccessful with the dependencies i have chosen.)
@@ -31,6 +35,7 @@ html: specifies the template type,  exlude for default html templates.  The valu
 `	"html": "pug"  will produce <template lang="pug">`
 style: specifies the style type, exclude for the default style.
 	`"style": "stylus" will produce <style lang="stylus">`
+styleImports: will include the array of strings at the top of the style template..
 
 The folder structure this produces:
 
@@ -65,6 +70,3 @@ for example modules registers the Vuex.Store with the appriate modules.
 whereas the component index file will register the component as follows:
 
 `Vue.component('myComponent', myComponent)`
-
-
-
