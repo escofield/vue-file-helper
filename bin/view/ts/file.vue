@@ -1,11 +1,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-
-let VueTidyRoutes = require('vue-tidyroutes').default
+{{#scriptViewImports}}
+{{{.}}}
+{{/scriptViewImports}}
 
 @Component({
   name: '{{{name}}}',
-  components: { }
+  components: { },
+  mixins: [{{#scriptViewMixins}}{{{.}}}, {{/scriptViewMixins}}],
 })
 class {{{className}}} extends Vue {
   beforeRouteEnter(to: String, from: String, next: any){

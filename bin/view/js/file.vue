@@ -1,17 +1,15 @@
 <script>
-let VueTidyRoutes = require('vue-tidyroutes').default
+{{#scriptViewImports}}
+{{{.}}}
+{{/scriptViewImports}}
 
 let {{{className}}} = {
   name: '{{{name}}}',
+  mixins: [{{#scriptViewMixins}}{{{.}}}, {{/scriptViewMixins}}],
   data: () => {
     return {
       msg: 'some data',
     }
-  },
-  beforeRouteEnter: (to, from, next) => {
-    next(vm => {
-      vm.$store.dispatch('auth/validateAuth', [vm.$router, vm.$route])
-    })
   },
 }
 VueTidyRoutes.route('/{{{name}}}', { name: '{{{name}}}', component: {{{className}}} })

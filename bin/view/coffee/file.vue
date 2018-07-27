@@ -1,12 +1,13 @@
 <script lang="coffee">
-import VueTidyRoutes from 'vue-tidyroutes'
+{{#scriptViewImports}}
+{{{.}}}
+{{/scriptViewImports}}
+
 {{{className}}} =
   name: '{{{name}}}'
+  mixins: [{{#scriptViewMixins}}{{{.}}}, {{/scriptViewMixins}}]
   data: () ->
       msg: 'some data'
-  beforeRouteEnter: (to, from, next) ->
-      next (vm) ->
-          vm.$store.dispatch 'auth/validateAuth', [vm.$router, vm.$route]
 
 VueTidyRoutes.route '/{{{name}}}',
                    name: '{{{name}}}'

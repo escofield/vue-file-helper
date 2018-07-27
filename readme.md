@@ -18,7 +18,8 @@ these can be accessed via the shell from the project folder.  You should modify 
         "filter": "vue-helper-filter",
         "module": "vue-helper-module",
         "model": "vue-helper-model",
-        "service": "vue-helper-service"
+        "service": "vue-helper-service",
+				"mixin": "vue-helper-mixin"
     },
     "vueHelper": {
 		"lang": "js",
@@ -27,7 +28,15 @@ these can be accessed via the shell from the project folder.  You should modify 
 			"style": "less"
 			"styleImports": [
 				"@import \"..\theme\variables.less\";"
-			]
+			],
+      "scriptViewImports": [
+      ],
+      "scriptViewMixins": [
+      ],
+      "scriptComponentImports": [
+      ],
+      "scriptComponentMixins": [
+      ]
     }
 
 lang: specifies the output file types and can be ['js','coffee']  'ts' is experimental it will output files but I was unsuccessful with the dependencies i have chosen.)

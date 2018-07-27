@@ -1,6 +1,11 @@
 <script lang="coffee">
+{{#scriptComponentImports}}
+{{{.}}}
+{{/scriptComponentImports}}
+
 export default
-  name: {{{className}}} 
+  name: {{{className}}}
+  mixins: [{{#scriptComponentMixins}}{{{.}}}, {{/scriptComponentMixins}}]
   data: () ->
     msg: 'some data'
 </script>

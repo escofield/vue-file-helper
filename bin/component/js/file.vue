@@ -1,8 +1,12 @@
 <script>
 import { Component, Vue } from 'vue-property-decorator'
+{{#scriptComponentImports}}
+{{{.}}}
+{{/scriptComponentImports}}
 
 export default  {
   name: '{{{name}}}',
+  mixins: [{{#scriptComponentMixins}}{{{.}}}, {{/scriptComponentMixins}}],
   data: () => {
     return {
       msg: 'some data',

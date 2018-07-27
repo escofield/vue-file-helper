@@ -1,7 +1,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+{{#scriptComponentImports}}
+{{{.}}}
+{{/scriptComponentImports}}
+
 @Component({
   name: '{{{name}}}',
+  mixins: [{{#scriptComponentMixins}}{{{.}}}, {{/scriptComponentMixins}}],
   components: { }
 })
 export default class {{{className}}} extends Vue {}
