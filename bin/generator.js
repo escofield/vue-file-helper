@@ -4,6 +4,7 @@ var mustache = require('mustache')
 
 module.exports = function({type, name, lang, filePath, indexPath, fileExt, options}) {
   var className = name.charAt(0).toUpperCase() + name.substr(1)
+  className = className.replace('-','_').replace('.','_')
   var template = {
     'ts': {
       ext: 'ts',
