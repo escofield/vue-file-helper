@@ -1,6 +1,6 @@
 {
   "name": "@escofieldpublic/vue-file-helper",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "description": "A set of scripts for creating Vue.js files",
   "bin": {
     "vue-helper-component": "bin/genComponent.js",
@@ -12,6 +12,7 @@
     "vue-helper-mixin": "bin/genMixin.js"
   },
   "dependencies": {
+    "fs-extra": "^7.0.0",
     "mustache": "^2.3.0",
     "replace": "^1.0.0"
   },

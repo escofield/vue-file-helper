@@ -1,39 +1,37 @@
-var fs = require('fs')
+var fs = require('fs-extra')
 var replace = require('replace')
 var mustache = require('mustache')
 
-module.exports = function({type, name, lang, filePath, indexPath, fileExt, options}) {
+module.exports = function({type, name, filePath}) {
   var className = name.charAt(0).toUpperCase() + name.substr(1)
   className = className.replace('-','_').replace('.','_')
   var template = {
-    'ts': {
-      ext: 'ts',
-      r1: '// GEN_INSERT_TOKEN_1 //',
-      r2: '// GEN_INSERT_TOKEN_2 //',
-    },
-    'js': {
-      ext: 'js',
-      r1: '// GEN_INSERT_TOKEN_1 //',
-      r2: '// GEN_INSERT_TOKEN_2 //',
-    },
-    'coffee': {
-      ext: 'coffee',
-      r1: '## GEN_INSERT_TOKEN_1 ##',
-      r2: '## GEN_INSERT_TOKEN_2 ##',
-    }
+    r1: '// GEN_INSERT_TOKEN_1 //',
+    r2: '// GEN_INSERT_TOKEN_2 //',
   }
-  var view = Object.assign(template[lang], {className: className, name: name, ...options})
-  fileExt = !!fileExt ? fileExt : view.ext
-  var file = `${filePath}${name}.${fileExt}`
-  var tPath = `${__dirname}\\${type}\\${lang}\\`
-  view.rt1 = mustache.render(fs.readFileSync(`${tPath}replacement1.${view.ext}`).toString(),view)
-  view.rt2 = mustache.render(fs.readFileSync(`${tPath}replacement2.${view.ext}`).toString(),view)
-  view.t = mustache.render(fs.readFileSync(`${tPath}file.${fileExt}`).toString(),view)
+
+  fs.copySync(`${__dirname}\\templates`, `${process.env.INIT_CWD}/vue-helper-templates/`, {overwrite: false})
+  var tPath = `${process.env.INIT_CWD}\\vue-helper-templates\\${type}\\`
+  console.log(tPath)
+  var files = fs.readdirSync(tPath)
+  var mainFile = String(files.filter(x => x.startsWith('file.'))) || ''
+  var indexFile = String(files.filter(x => x.startsWith('indexfile.'))) || ''
+  var mainExt = mainFile.split('.').pop()
+  var indexExt = indexFile.split('.').pop()
+
+  var view = Object.assign(template, {className: className, name: name})
+  var file = `${filePath}${name}.${mainExt}`
+
+  view.rt1 = mustache.render(fs.readFileSync(`${tPath}replacement1`).toString(),view)
+  view.rt2 = mustache.render(fs.readFileSync(`${tPath}replacement2`).toString(),view)
+  view.t = mustache.render(fs.readFileSync(`${tPath}file.${mainExt}`).toString(),view)
   
-  if(indexPath){
-    var indexfile = `${indexPath}index.${view.ext}`
-    view.i = mustache.render(fs.readFileSync(`${tPath}indexfile.${view.ext}`).toString(),view)
-    try { fs.mkdirSync(indexPath)} catch (e) {;}
+  try { fs.mkdirSync(filePath)} catch (e) {;}
+
+  if(indexFile.length > 0){
+    var indexfile = `${filePath}index.${indexExt}`
+    view.i = mustache.render(fs.readFileSync(`${tPath}indexfile.${indexExt}`).toString(),view)
+    
     if(!fs.existsSync(indexfile)){
       fs.writeFileSync(indexfile,view.i
       )
@@ -55,7 +53,6 @@ module.exports = function({type, name, lang, filePath, indexPath, fileExt, optio
       })
     }
   }
-  try { fs.mkdirSync(filePath)} catch (e) {;}
   fs.writeFileSync(file,view.t)
   console.log(`Created: ${file}`)
 }
