@@ -20,62 +20,9 @@ these can be accessed via the shell from the project folder.  You should modify 
         "model": "vue-helper-model",
         "service": "vue-helper-service",
 				"mixin": "vue-helper-mixin"
-    },
-    "vueHelper": {
-		"lang": "js",
-		"options": {
-			"html": "pug",
-			"style": "less"
-			"styleImports": [
-				"@import \"..\theme\variables.less\";"
-			],
-      "scriptViewImports": [
-      ],
-      "scriptViewMixins": [
-      ],
-      "scriptComponentImports": [
-      ],
-      "scriptComponentMixins": [
-      ]
     }
 
-lang: specifies the output file types and can be ['js','coffee']  'ts' is experimental it will output files but I was unsuccessful with the dependencies i have chosen.)
-html: specifies the template type,  exlude for default html templates.  The value is placed into the lang tag if included.  example:
-`	"html": "pug"  will produce <template lang="pug">`
-style: specifies the style type, exclude for the default style.
-	`"style": "stylus" will produce <style lang="stylus">`
-styleImports: will include the array of strings at the top of the style template..
+When you run this for the first time,  all templates are copied into the project directory so you can modify them yourself.
+extensions are dynamic based on the file.<extension> and indexfile.<extension>
 
-The folder structure this produces:
-
-	components
-		myComponent.vue
-		index.js
-	filters
-		myFilter.ts
-		index.js
-	views
-		myView.vue
-		index.js
-	store
-		modules
-			myStoreModule.js
-		index.js
-	models
-		myModel.js
-	services
-		myService.js
-		index.js
-
-Each index file should be registered in your main.js.  Each index file is the registry for the items in those directories and may contain logic specific to that type.
-
-for example modules registers the Vuex.Store with the appriate modules.
-
-	export default new Vuex.Store
-			  strict: true,
-			  modules:
-					'myModule': myModule
-
-whereas the component index file will register the component as follows:
-
-`Vue.component('myComponent', myComponent)`
+replacement1 and replacemen2 are used to inject into the index file on subsequent uses.
