@@ -1,2 +1,2 @@
-import './{{{name}}}.vue'
+import './{{{fileName}}}.vue'
 {{{r1}}}

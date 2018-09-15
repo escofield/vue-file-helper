@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 var generate = require('./generator')
 
-var helper = require(`${proces.env.INIT_CWD}/package.json`).vueHelper
+var helper = require(`${process.env.INIT_CWD}/package.json`).vueHelper
 var [ , , name] = process.argv
 
 var p = `${process.env.INIT_CWD}\\src\\models\\`

@@ -1,5 +1,5 @@
 export class {{{className}}} {
-  var firstUpdate = '{{{name}}}/firstupdate'
+  static firstUpdate = '{{{name}}}/firstupdate'
 }
 
 export default{

@@ -1,2 +1,2 @@
-import {{{className}}} from './{{{name}}}'
+import {{{className}}} from './{{{fileName}}}'
 {{{r1}}}

@@ -1,2 +1,2 @@
-import {{{className}}} from './modules/{{{name}}}'
+import {{{className}}} from './{{{fileName}}}'
 {{{r1}}}

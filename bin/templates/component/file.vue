@@ -1,12 +1,7 @@
 <script>
-import { Component, Vue } from 'vue-property-decorator'
-{{#scriptComponentImports}}
-{{{.}}}
-{{/scriptComponentImports}}
-
 export default  {
-  name: '{{{name}}}',
-  mixins: [{{#scriptComponentMixins}}{{{.}}}, {{/scriptComponentMixins}}],
+  name: '{{{componentName}}}',
+  mixins: [],
   data: () => {
     return {
       msg: 'some data',
@@ -14,12 +9,12 @@ export default  {
   },
 }
 </script>
-<template{{#html}} lang="{{html}}"{{/html}}>
-.{{{name}}} Hello from {{{name}}} component
+<template lang="pug">
+include ../{{#depth}}../{{/depth}}mixins/html
+.{{{componentName}}} Hello from {{{componentName}}} component
 </template>
-<style{{#style}} lang="{{style}}"{{/style}}>
-{{#styleImports}}
-{{{.}}}
-{{/styleImports}}
-.{{{name}}} {}
+<style lang="less" scoped>
+@import '../{{#depth}}../{{/depth}}theme/custom.less';
+@import '../{{#depth}}../{{/depth}}theme/fluidMixins.less';
+.{{{componentName}}} {}
 </style>

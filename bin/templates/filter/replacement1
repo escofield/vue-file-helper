@@ -1,2 +1,2 @@
-import './{{{name}}}'
+import './{{{fileName}}}'
 {{{r1}}}
