@@ -14,12 +14,14 @@ module.exports = function({type, name, filePath}) {
   const p = name.split('/')
   const o = p.pop()
   let subPath = filePath
+  var depth = []
 
   try { fs.mkdirSync(subPath)} catch (e) {;}
 
   if(p && p.length > 0) {
     for(const s in p) {
       subPath = `${subPath}${p[s]}\\`
+      depth.push('')
       try { fs.mkdirSync(subPath)} catch (e) {;}
     }
   }
@@ -35,7 +37,7 @@ module.exports = function({type, name, filePath}) {
     camelClassName: camelClassName,
     name: o,
     fileName: name,
-    depth: (name.match(/\//g) || []).length
+    depth: depth
   }
 
   fs.copySync(`${__dirname}\\templates`, `${process.env.INIT_CWD}/vue-helper-templates/`, {overwrite: false})
