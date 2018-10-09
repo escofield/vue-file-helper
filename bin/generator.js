@@ -15,9 +15,13 @@ module.exports = function({type, name, filePath}) {
   const o = p.pop()
   let subPath = filePath
 
+  try { fs.mkdirSync(subPath)} catch (e) {;}
+
   if(p && p.length > 0) {
-    p.push('/')
-    subPath = filePath + p.join('/')
+    for(const s in p) {
+      subPath = `${subPath}${p[s]}\\`
+      try { fs.mkdirSync(subPath)} catch (e) {;}
+    }
   }
   var upCaseName = o.reUpCaseAll('-').reUpCaseAll('.')
   var camelClassName = upCaseName.charAt(0).toLowerCase() + upCaseName.slice(1)
@@ -26,8 +30,8 @@ module.exports = function({type, name, filePath}) {
     r1: '// GEN_INSERT_TOKEN_1 //',
     r2: '// GEN_INSERT_TOKEN_2 //',
     className:  upCaseName,
-    componentName: o.replace('.','-').replace('/','-'),
-    componentFullName: name.replace('.','-').replace('/','-'),
+    componentName: o.replace(/\./g,'-').replace(/\//g,'-'),
+    componentFullName: name.replace(/\./g,'-').replace(/\//g,'-'),
     camelClassName: camelClassName,
     name: o,
     fileName: name,
@@ -49,7 +53,6 @@ module.exports = function({type, name, filePath}) {
   view.rt2 = mustache.render(fs.readFileSync(`${tPath}replacement2`).toString(),view)
   view.t = mustache.render(fs.readFileSync(`${tPath}file.${mainExt}`).toString(),view)
   console.log(`writing dir ${subPath}`)
-  try { fs.mkdirSync(subPath)} catch (e) {;}
 
   if(indexFile.length > 0){
     var indexfile = `${filePath}index.${indexExt}`
