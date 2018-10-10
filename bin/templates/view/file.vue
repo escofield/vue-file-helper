@@ -1,20 +1,20 @@
 <script>
-import authGuard from '../{{#depth}}../{{/depth}}mixins/authGuard'
 import VueTidyRoutes from 'vue-tidyroutes'
+import { GUID } from '../{{#depth}}../{{/depth}}AppConfig'
 
 let {{{className}}} = {
   name: '{{{componentName}}}',
-  mixins: [authGuard],
-  data: () => {
+  mixins: [],
+  data() {
     return {
       msg: 'some data',
     }
   },
 }
-VueTidyRoutes.route('/:locale(\\w\\w)?/{{{fileName}}}', {
+VueTidyRoutes.route(`/:locale(\\w\\w)?/:spaceId(${GUID})/{{{fileName}}}`, {
   name: '{{{componentFullName}}}',
   component: {{{className}}},
-  meta: { layout: 'authenticated' }
+  meta: { layout: 'authenticated' },
 })
 
 export default {{{className}}}

@@ -2,7 +2,7 @@
 export default  {
   name: '{{{componentName}}}',
   mixins: [],
-  data: () => {
+  data() {
     return {
       msg: 'some data',
     }

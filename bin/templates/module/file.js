@@ -1,22 +1,31 @@
 export class {{{className}}} {
-  static firstUpdate = '{{{name}}}/firstupdate'
+  static resetState = '{{{camelClassName}}}/resetState'
+}
+
+const getDefaultState = () => {
+  const store = JSON.parse(localStorage.getItem('store'))
+  return (
+    (store && store.{{{camelClassName}}}) || {
+    first: '',
+    last: '',
+  })
 }
 
 export default{
   namespaced: true,
-  state:{
-    first: '',
-    last: '',
-  },
+  state: getDefaultState(),
   getters:{
     fullname(state){
       return "#{state.first} #{state.last}"
     }
   },
   mutations:{
-    updatefirst(state, first){
-      state.first = first
-    }
+    resetState(state) {
+      const newState = getDefaultState()
+      for (let name in newState) {
+        state[name] = newState[name]
+      }
+    },
   },
   actions:{
     firstupdate(context, first){
