@@ -9,7 +9,8 @@
     "vue-helper-model": "bin/genModel.js",
     "vue-helper-service": "bin/genService.js",
     "vue-helper-view": "bin/genView.js",
-    "vue-helper-mixin": "bin/genMixin.js"
+    "vue-helper-mixin": "bin/genMixin.js",
+    "vue-helper-ui": "bin/genUIComponent.js"
   },
   "dependencies": {
     "fs-extra": "^7.0.0",

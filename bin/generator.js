@@ -51,6 +51,11 @@ module.exports = function({type, name, filePath}) {
 
   var file = `${filePath}${name}.${mainExt}`
 
+  if(fs.existsSync(file)) {
+    console.log(`************ ${file}`)
+    console.log(`ERROR:  file exists!`)
+    return
+  }
   view.rt1 = mustache.render(fs.readFileSync(`${tPath}replacement1`).toString(),view)
   view.rt2 = mustache.render(fs.readFileSync(`${tPath}replacement2`).toString(),view)
   view.t = mustache.render(fs.readFileSync(`${tPath}file.${mainExt}`).toString(),view)
