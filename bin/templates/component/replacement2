@@ -1,2 +1,2 @@
-Vue.component('{{{name}}}', {{{className}}})
+Vue.component('{{{componentFullName}}}', {{{className}}})
 {{{r2}}}

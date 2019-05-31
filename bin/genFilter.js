@@ -3,7 +3,7 @@ var generate = require('./generator')
 
 var [ , , name] = process.argv
 
-var p = `${process.env.INIT_CWD}\\src\\filters\\`
+var p = `${process.env.INIT_CWD}/src/filters/`
 
 if (name === undefined) {
   console.log(`Adds a filter to the filters directory, creates the index if it is missing.`)

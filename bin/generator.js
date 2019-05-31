@@ -20,7 +20,7 @@ module.exports = function({type, name, filePath}) {
 
   if(p && p.length > 0) {
     for(const s in p) {
-      subPath = `${subPath}${p[s]}\\`
+      subPath = `${subPath}${p[s]}/`
       depth.push('')
       try { fs.mkdirSync(subPath)} catch (e) {;}
     }
@@ -39,9 +39,13 @@ module.exports = function({type, name, filePath}) {
     fileName: name,
     depth: depth
   }
-
-  fs.copySync(`${__dirname}\\templates`, `${process.env.INIT_CWD}/vue-helper-templates/`, {overwrite: false})
-  var tPath = `${process.env.INIT_CWD}\\vue-helper-templates\\${type}\\`
+  
+  console.log('******************')
+  console.log(view)
+  console.log('******************')
+ 
+  fs.copySync(`${__dirname}/templates`, `${process.env.INIT_CWD}/vue-helper-templates/`, {overwrite: false})
+  var tPath = `${process.env.INIT_CWD}/vue-helper-templates/${type}/`
   console.log(tPath)
   var files = fs.readdirSync(tPath)
   var mainFile = String(files.filter(x => x.startsWith('file.'))) || ''

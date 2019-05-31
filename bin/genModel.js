@@ -4,7 +4,7 @@ var generate = require('./generator')
 var helper = require(`${process.env.INIT_CWD}/package.json`).vueHelper
 var [ , , name] = process.argv
 
-var p = `${process.env.INIT_CWD}\\src\\models\\`
+var p = `${process.env.INIT_CWD}/src/models/`
 
 if (name === undefined) {
   console.log(`Adds a model to the models directory, creats the index if it is missing.`)

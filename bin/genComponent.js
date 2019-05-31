@@ -2,8 +2,8 @@
 var generate = require('./generator')
 
 var [ , , name,] = process.argv
-
-var p = `${process.env.INIT_CWD}\\src\\components\\`
+console.log('Generate Component ******')
+var p = `${process.env.INIT_CWD}/src/components/`
 
 if (name === undefined) {
   console.log(`Adds a component to the components directory, creats the index if it is missing.`)

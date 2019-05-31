@@ -3,7 +3,7 @@ var generate = require('./generator')
 
 var [ , , name] = process.argv
 
-var p = `${process.env.INIT_CWD}\\src\\views\\`
+var p = `${process.env.INIT_CWD}/src/views/`
 
 if (name === undefined) {
   console.log(`Adds a view to the views directory, creats the index if it is missing.`)

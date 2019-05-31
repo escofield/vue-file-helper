@@ -3,7 +3,7 @@ var generate = require('./generator')
 
 var [ , , name] = process.argv
 
-var p = `${process.env.INIT_CWD}\\src\\store\\`
+var p = `${process.env.INIT_CWD}/src/store/`
 
 if (name === undefined) {
   console.log(`Adds a module to the modules directory, creats the index if it is missing.`)

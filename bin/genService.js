@@ -3,7 +3,7 @@ var generate = require('./generator')
 
 var [ , , name] = process.argv
 
-var p = `${process.env.INIT_CWD}\\src\\services\\`
+var p = `${process.env.INIT_CWD}/src/services/`
 
 if (name === undefined) {
   console.log(`Adds a service to the services directory, creats the index if it is missing.`)
